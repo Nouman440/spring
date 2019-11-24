@@ -1,0 +1,122 @@
+<html>
+<body background="mill-1745186_1920.jpg">
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <!-- Include JS File Here -->
+    <link href="style.css" rel="stylesheet"/>
+    <!-- Include JS File Here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var vmodel1 = $("#model1").val();
+                var vmodel2 = $("#model1").val();
+                var vuser = $("#user1").val();
+                var value = $("#val").val();
+                var vcomment = $("#comment1").val();
+
+
+                if(vmodel1=='' && vmodel2=='' && vuser=='' && value=='' && vcomment==='')
+                {
+                    alert("Please fill out the Data");
+                }
+
+                else{
+                    $.post("noman-0.0.1-SNAPSHOT/submitJob3", //Required URL of the page on server
+                        { // Data Sending With Request To Server
+                            value1:vmodel1,
+                            value2:vmodel2,
+                            user:vuser,
+                            value:value,
+                            comment:vcomment,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        },
+                        function(response,status){ // Required Callback Function
+                            alert("Data Received Status : " + status);
+                            $("#form")[0].reset();
+                            var o=JSON.parse(response);
+                            alert(" Json object : " + o);
+                        });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LIMES Model</h2>
+    <hr>
+    <form id="form" method="post">
+        </select>
+        <div id="value1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>model1</b></label>   <select name="model1"> size="9">
+            <option value="Schneller Kohleausstieg (bis 2025)">Schneller Kohleausstieg (bis 2025)</option>
+            <option value="Mittelfristiger Kohleausstieg (bis 2035)">Mittelfristiger Kohleausstieg (bis 2035)</option>
+            <option value="Später Kohleausstieg (nach 2040)">Später Kohleausstieg (nach 2040)</option>
+            <option value="Verbrauch bleibt konstant (+5 bis -5 %)">Verbrauch bleibt konstant (+5 bis -5 %)</option>
+            <option value="Verbrauch sinkt mäßig (-5 bis -15%)">Verbrauch sinkt mäßig (-5 bis -15%)</option>
+            <option value="Verbrauch sinkt stark (> -15 %)">Verbrauch sinkt stark (> -15 %)</option>
+            <option value="Viel Wind">Viel Wind</option>
+            <option value="Offshore">Offshore</option>
+            <option value="Viel PV">Viel PV</option>
+            <option value="Ausgeglichen">Ausgeglichen</option>
+
+        </select>
+
+
+
+            <div id="value2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>model2</b></label><select name="model2">
+                <option value="Schneller Kohleausstieg (bis 2025)">Schneller Kohleausstieg (bis 2025)</option>
+                <option value="Mittelfristiger Kohleausstieg (bis 2035)">Mittelfristiger Kohleausstieg (bis 2035)</option>
+                <option value="Später Kohleausstieg (nach 2040)">Später Kohleausstieg (nach 2040)</option>
+                <option value="Verbrauch bleibt konstant (+5 bis -5 %)">Verbrauch bleibt konstant (+5 bis -5 %)</option>
+                <option value="Verbrauch sinkt mäßig (-5 bis -15%)">Verbrauch sinkt mäßig (-5 bis -15%)</option>
+                <option value="Verbrauch sinkt stark (> -15 %)">Verbrauch sinkt stark (> -15 %)</option>
+                <option value="Viel Wind">Viel Wind</option>
+                <option value="Offshore">Offshore</option>
+                <option value="Viel PV">Viel PV</option>
+                <option value="Ausgeglichen">Ausgeglichen</option>
+
+            </select>
+
+
+        <div id="user  ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>User</b>&nbsp; &nbsp; &nbsp;</label>
+            <input type="text" Model="user" id="user1" placeholder="user"/><br></div>
+
+        <div id="value">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Value</b></label>
+            <input type="text" name="value" id="val" placeholder="value"/></div>
+
+        <div id="comment">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Comment</b>&nbsp; &nbsp;</label>
+            <input type="text" Model="comment" id="comment1" placeholder="comment"/><br></div>
+
+            </select>
+
+
+
+
+
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="btn"><strong>Send Data</strong></button>
+</div>
+</body>
+</html>

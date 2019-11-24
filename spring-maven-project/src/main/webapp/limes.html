@@ -1,0 +1,61 @@
+<html>
+
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+    <script type="text/javascript">
+        function hello() {
+            //
+            $.getJSON("noman-0.0.1-SNAPSHOT/listJobs", function(json) {
+                $('#jsonTable').css("visibility", "visible").css("border", "1px solid green");
+                $('#jsonTable').append("<tbody>");
+                for (var counter = 0; counter < json.length; counter++) {
+                    $('#jsonTable').append(`<tr><td>${json[counter].Model}</td><td>${json[counter].Scenario}</td><td>${json[counter].Region}</td><td>${json[counter].Variable}</td><td>${json[counter].unit}</td><td>${json[counter].mostreleventtodata}</td><td>${json[counter].Amount[0].year}</td><td>${json[counter].Amount[0].value}</td><td>${json[counter].Amount[1].year}</td><td>${json[counter].Amount[1].value}</td><td>${json[counter].Amount[2].year}</td><td>${json[counter].Amount[2].value}</td><td>${json[counter].Amount[3].year}</td><td>${json[counter].Amount[3].value}</td><td>${json[counter].Amount[4].year}</td><td>${json[counter].Amount[4].value}</td><td>${json[counter].Amount[5].year}</td><td>${json[counter].Amount[5].value}</td><td>${json[counter].Amount[6].year}</td><td>${json[counter].Amount[6].value}</td><td>${json[counter].Amount[7].year}</td><td>${json[counter].Amount[7].value}</td><td>${json[counter].Amount[8].year}</td><td>${json[counter].Amount[8].value}</td><td>`);
+                }
+                $('#jsonTable').append("</tbody>");
+                $('th').css("border", "1px solid green");
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<h1>Please click the button below to view LIMES DATA</h1>
+<body>
+<input type="button" value="View LIMES Data" id="View LIMES Data" onclick="return hello();"/>
+<br/>
+<table id="jsonTable"border="2" style="visibility:hidden">
+    <thead>
+    <tr>
+        <!-- The JSON downloaded from the URL above provides four attributes.-->
+        <th>Model</th>
+        <th>Scenario</th>
+        <th>Region</th>
+        <th>Variable</th>
+        <th>unit</th>
+        <th>mostrelevantdata</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+        <th>year</th>
+        <th>value</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

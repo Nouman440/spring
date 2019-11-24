@@ -1,0 +1,247 @@
+<html>
+<body background="mill-1745186_1920.jpg">
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <!-- Include JS File Here -->
+    <link href="style.css" rel="stylesheet"/>
+    <!-- Include JS File Here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var vname = $("#Model1").val();
+                var vemail = $("#Scenario1").val();
+                var vregion = $("#Region1").val();
+                var variable = $("#Variable1").val();
+                var vunit = $("#unit1").val();
+                var vmost = $("#mostrelevanttodata1").val();
+                var vyear =$('[name="year"]').val();
+                var vvalue = $("#value1").val();
+                var vyear1 = $('[name="year1"]').val();
+                var vvalue1 = $("#value151").val();
+                var vyear2 = $('[name="year2"]').val();
+                var vvalue2 = $("#value201").val();
+                var vyear3 = $('[name="year3"]').val();
+                var vvalue3 = $("#value251").val();
+                var vyear4 = $('[name="year4"]').val();
+                var vvalue4 = $("#value301").val();
+                var vyear5 = $('[name="year5"]').val();
+                var vvalue5 = $("#value351").val();
+                var vyear6 = $('[name="year6"]').val();
+                var vvalue6 = $("#value401").val();
+                var vyear7 = $('[name="year7"]').val();
+                var vvalue7 = $("#value451").val();
+                var vyear8 = $('[name="year8"]').val();
+                var vvalue8 = $("#value501").val();
+
+
+                if(vname=='' && vemail=='' && vregion=='' && variable=='' && vunit==''&& vmost=='')
+                {
+                    alert("Please fill out the Data");
+                }
+
+                else{
+                    $.post("noman-0.0.1-SNAPSHOT/submitJob", //Required URL of the page on server
+                        { // Data Sending With Request To Server
+                            Model:vname,
+                            Scenario:vemail,
+                            Region:vregion,
+                            Variable:variable,
+                            unit:vunit,
+                            mostrelevanttodata:vmost,
+                            year:vyear,
+                            value:vvalue,
+                            year1:vyear1,
+                            value1:vvalue1,
+                            year2:vyear2,
+                            value2:vvalue2,
+                            year3:vyear3,
+                            value3:vvalue3,
+                            year4:vyear4,
+                            value4:vvalue4,
+                            year5:vyear5,
+                            value5:vvalue5,
+                            year6:vyear6,
+                            value6:vvalue6,
+                            year7:vyear7,
+                            value7:vvalue7,
+                            year8:vyear8,
+                            value8:vvalue8
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        },
+                        function(response,status){ // Required Callback Function
+                            alert("Data Received Status : " + status);
+                            $("#form")[0].reset();
+                        });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LIMES Model</h2>
+    <hr>
+    <form id="form" method="post">
+        <div id="Model  ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Model</b>&nbsp; &nbsp; &nbsp;</label>
+            <input type="text" Model="Model" id="Model1" placeholder="Model"/><br></div>
+
+        <div id="Scenario">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Scenario</b></label>
+            <input type="text" name="Scenario" id="Scenario1" placeholder="Scenario"/></div>
+
+        <div id="Region">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Region</b>&nbsp; &nbsp;</label>
+            <input type="text" Model="Region" id="Region1" placeholder="Region"/><br></div>
+
+        <div id="Variable">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Variable</b></label>
+            <input type="text" name="Variable" id="Variable1" placeholder="Variable"/></div>
+        <div id="unit">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>unit</b>&nbsp; &nbsp; &nbsp; &nbsp; </label>
+            <input type="text" Model="unit" id="unit1" placeholder="unit"/><br></div>
+
+        <div id="mostrelevanttodata">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Check</b>&nbsp; &nbsp; </label>
+            <input type="text" name="mostrelevanttodata" id="mostrelevanttodata1" placeholder="most relevant to check"/></div>
+
+
+
+    <div id="value">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label>   <select name="year"> size="9">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+
+            <input type="text" Model="value" id="value1" placeholder="value"/><br></div>
+
+
+        <div id="value15">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year1">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value15" id="value151" placeholder="value"/></div>
+
+        <div id="value20">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year2">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" Model="value20" id="value201" placeholder="value"/><br></div>
+
+        <div id="value25">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year3">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value25" id="value251" placeholder="value"/></div>
+
+        <div id="value30">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year4">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value30" id="value301" placeholder="value"/></div>
+
+        <div id="value35">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year5">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value35" id="value351" placeholder="value"/></div>
+
+        <div id="value40">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year6">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value40" id="value401" placeholder="value"/></div>
+
+        <div id="value45">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year7">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value45" id="value451" placeholder="value"/></div>
+
+        <div id="value50">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b></label><select name="year8">
+            <option value="2010">2010</option>
+            <option value="2015">2015</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            <option value="2035">2035</option>
+            <option value="2040">2040</option>
+            <option value="2045">2045</option>
+            <option value="2050">2050</option>
+        </select>
+            <input type="text" name="value50" id="value501" placeholder="value"/></div>
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="btn"><strong>Send Data</strong></button>
+</div>
+</body>
+</html>

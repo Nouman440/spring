@@ -1,0 +1,276 @@
+<html>
+<body background="mill-1745186_1920.jpg">
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <!-- Include JS File Here -->
+    <link href="style.css" rel="stylesheet"/>
+    <!-- Include JS File Here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var vname = $('[name="year"]').val();
+                var vemail = $('[name="year1"]').val();
+                var vregion = $("#Region1").val();
+                var variable = $("#Variable1").val();
+                var vunit = $('[name="comment"]').val();
+
+
+
+                if(vname=='' && vemail=='' )
+                {
+                    alert("Please fill out the Data");
+                }
+
+                else{
+                    $.post("/listJobs3", //Required URL of the page on server
+                        { // Data Sending With Request To Server
+                            value1:vname,
+                            value2:vemail,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        },
+
+                        function (response,status){ // Required Callback Function
+
+
+
+                            $('#jsonTable').css("visibility", "visible").css("border", "1px solid green");
+                            $('#jsonTable').append("<tbody>");
+
+                            var tr;
+
+                                tr = $('<tr/>');
+                                tr.append("<td>" + response[0].value1 + "</td>");
+                                tr.append("<td>" + response[0].value2 + "</td>");
+
+
+                                $('#jsonTable').append(tr);
+                            $('th').css("border", "1px solid green");
+
+                            $('#Table').css("visibility", "visible").css("border", "1px solid green");
+                            $('#Table').append("<tbody>");
+
+                            var tr;
+
+                            for (var counter = 0; counter < response[0].info.length; counter++) {
+
+
+
+                                tr = $('<tr/>');
+                                tr.append("<td>" + response[0].info[counter].user + "</td>");
+                                tr.append("<td>" + response[0].info[counter].value + "</td>");
+                                tr.append("<td>" + response[0].info[counter].comment + "</td>");
+                                tr.append("<td>" + response[0].info[counter].date + "</td>");
+                                $('#Table').append(tr);
+
+                            }
+
+
+                            $('th').css("border", "1px solid green");
+
+
+
+
+
+
+                        });
+
+                }
+                $('input[type="button"]').click(function(e){
+                    document.location.reload(true);
+                })
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CIB matrix Model</h2>
+    <hr>
+    <form id="form" method="post" >
+
+
+        <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Model1</b></label>   <select name="year"> size="9">
+            <option value="Schneller Kohleausstieg (bis 2025)">Schneller Kohleausstieg (bis 2025)</option>
+            <option value="Mittelfristiger Kohleausstieg (bis 2035)">Mittelfristiger Kohleausstieg (bis 2035)</option>
+            <option value="Später Kohleausstieg (nach 2040)">Später Kohleausstieg (nach 2040)</option>
+            <option value="Verbrauch bleibt konstant (+5 bis -5 %)">Verbrauch bleibt konstant (+5 bis -5 %)</option>
+            <option value="Verbrauch sinkt mäßig (-5 bis -15%)">Verbrauch sinkt mäßig (-5 bis -15%)</option>
+            <option value="Verbrauch sinkt stark (> -15 %)">Verbrauch sinkt stark (> -15 %)</option>
+            <option value="Struktur EE-Erzeugung Viel Wind">Struktur EE-Erzeugung Viel Wind</option>
+            <option value="Struktur EE-Erzeugung Offshore">Struktur EE-Erzeugung Offshore</option>
+            <option value="Struktur EE-Erzeugung Viel PV">Struktur EE-Erzeugung Viel PV</option>
+            <option value="Struktur EE-Erzeugung Ausgeglichen">Struktur EE-Erzeugung Ausgeglichen</option>
+            <option value="Zentrale Verteilung">Zentrale Verteilung</option>
+            <option value="Dezentrale Verteilung">Dezentrale Verteilung</option>
+            <option value="Flexibilitätsoptionen Netzausbau">Flexibilitätsoptionen Netzausbau</option>
+            <option value="Flexibilitätsoptionen Demand Side Management">Flexibilitätsoptionen Demand Side Managementu</option>
+            <option value="Flexibilitätsoptionen Sektorkopplung">Flexibilitätsoptionen Sektorkopplung</option>
+            <option value="Flexibilitätsoptionen Gaskraftwerke">Flexibilitätsoptionen Gaskraftwerke</option>
+            <option value="Flexibilitätsoptionen Power-to-Gas">Flexibilitätsoptionen GPower-to-Gas</option>
+            <option value="Allgemeine Steuerungsformen Regionaler Ausgleich">Allgemeine Steuerungsformen Regionaler Ausgleich</option>
+            <option value="Allgemeine Steuerungsformen Nodal/ Zonal Pricing">Allgemeine Steuerungsformen Nodal/ Zonal Pricing</option>
+            <option value="Allgemeine Steuerungsformen Eigenverbrauch">Allgemeine Steuerungsformen Eigenverbrauc</option>
+            <option value="Allgemeine Steuerungsformen Zentrale Optimierung">Allgemeine Steuerungsformen Zentrale Optimierung</option>
+            <option value="Saisonaler Ausgleich von Gasnetzen">Saisonaler Ausgleich von Gasnetzen</option>
+            <option value="EE-Integration von Gasnetzen">EE-Integration von Gasnetzen</option>
+            <option value="Keine Nutzung von Gaskraftwerken">Keine Nutzung von Gaskraftwerken</option>
+            <option value="Ausbau Wärmenetze">Ausbau Wärmenetze</option>
+            <option value="Weniger Wärmenetze">Weniger Wärmenetze</option>
+            <option value="Effizienz vs. EE-Nutzun Fokus Effizienz/ Dämmung">Effizienz vs. EE-Nutzun Fokus Effizienz/ Dämmung</option>
+            <option value="Effizienz vs. EE-Nutzun Fokus EE-Nutzung">Effizienz vs. EE-Nutzun Fokus EE-Nutzung</option>
+            <option value="Starker P2H Einsatz">Starker P2H Einsatz</option>
+            <option value="Schwacher P2H Einsatz">Schwacher P2H Einsatz</option>
+            <option value="Verbot fossiler Heiztechnologie">Verbot fossiler Heiztechnologie</option>
+            <option value="Technologieoffenheit Heiztechnologie">Technologieoffenheit Heiztechnologie</option>
+            <option value="MIV bleibt im Zentrum der Stadtplanung">MIV bleibt im Zentrum der Stadtplanung</option>
+            <option value="Moderate Umgestaltung mit Fokus ÖPNV und Fahrrad in urbanen Räumen">Moderate Umgestaltung mit Fokus ÖPNV und Fahrrad in urbanen Räumen</option>
+            <option value="Starker Instrastrukturumbau zu ÖPNV und Fahrrad (urbane und ländliche Räume)">Starker Instrastrukturumbau zu ÖPNV und Fahrrad (urbane und ländliche Räume)</option>
+            <option value="Fokus schnelle Elektrifizierung">Fokus schnelle Elektrifizierung</option>
+            <option value="Graduelle Elektrifizierung/ Effizienzsteigerung">Graduelle Elektrifizierung/ Effizienzsteigerung</option>
+            <option value="keine spezifische Förderung von Antriebstechnologien">keine spezifische Förderung von Antriebstechnologien</option>
+            <option value=" Verbrennungsmotor mit Biokraftstoffen"> Verbrennungsmotor mit Biokraftstoffen</option>
+            <option value="Oberleitungs-Hybrid-LKW">Oberleitungs-Hybrid-LKW</option>
+            <option value="Synthetische Kraftstoffe">Synthetische Kraftstoffe</option>
+            <option value="Elektrische Betriebe ohne Oberleitung">Elektrische Betriebe ohne Oberleitung</option>
+            <option value="Fokus EE-Strom (vollständig EE)">EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe</option>
+            <option value="EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe">EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe</option>
+            <option value="Fokus alternative Kraftstoffe">Fokus alternative Kraftstoffe</option>
+            <option value="Sharing bleibt in der Nische">Sharing bleibt in der Nische</option>
+            <option value="Sharing wird dominanter Lebensstil">Sharing wird dominanter Lebensstil</option>
+            <option value="Personen- und Gterverkehr steigt weiter an">Personen- und Gterverkehr steigt weiter an</option>
+            <option value="Moderate Verkehrsvermeidung und -verlagerung">Moderate Verkehrsvermeidung und -verlagerung</option>
+            <option value="Fokus Direktstromnutzung">Fokus Direktstromnutzung</option>
+            <option value="Fokus Wasserstoff">Fokus Wasserstoff</option>
+            <option value="Fokus Methan">Fokus Methan</option>
+            <option value="Fokus Stromsektor">Fokus Stromsektor</option>
+            <option value="Fokus Wärmesektor">Fokus Wärmesektor</option>
+            <option value="KWK als kurzfristige Brückentechnologie">KWK als kurzfristige Brückentechnologie</option>
+            <option value="KWK als mittelfristige Brückentechnologie">KWK als mittelfristige Brückentechnologie</option>
+            <option value="Effizienzsteigerung/ Verbrauchsminderung">Effizienzsteigerung/ Verbrauchsminderung</option>
+            <option value="Direkte Elektrifizierung">Direkte Elektrifizierung</option>
+            <option value="Indirekte Elektrifizierung">Indirekte Elektrifizierung</option>
+            <option value="Biomasse">Biomasse</option>
+        </select></div>
+
+
+
+
+        <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>Model2</b></label><select name="year1">
+            <option value="Schneller Kohleausstieg (bis 2025)">Schneller Kohleausstieg (bis 2025)</option>
+            <option value="Mittelfristiger Kohleausstieg (bis 2035)">Mittelfristiger Kohleausstieg (bis 2035)</option>
+            <option value="Später Kohleausstieg (nach 2040)">Später Kohleausstieg (nach 2040)</option>
+            <option value="Verbrauch bleibt konstant (+5 bis -5 %)">Verbrauch bleibt konstant (+5 bis -5 %)</option>
+            <option value="Verbrauch sinkt mäßig (-5 bis -15%)">Verbrauch sinkt mäßig (-5 bis -15%)</option>
+            <option value="Verbrauch sinkt stark (> -15 %)">Verbrauch sinkt stark (> -15 %)</option>
+            <option value="Struktur EE-Erzeugung Viel Wind">Struktur EE-Erzeugung Viel Wind</option>
+            <option value="Struktur EE-Erzeugung Offshore">Struktur EE-Erzeugung Offshore</option>
+            <option value="Struktur EE-Erzeugung Viel PV">Struktur EE-Erzeugung Viel PV</option>
+            <option value="Struktur EE-Erzeugung Ausgeglichen">Struktur EE-Erzeugung Ausgeglichen</option>
+            <option value="Zentrale Verteilung">Zentrale Verteilung</option>
+            <option value="Dezentrale Verteilung">Dezentrale Verteilung</option>
+            <option value="Flexibilitätsoptionen Netzausbau">Flexibilitätsoptionen Netzausbau</option>
+            <option value="Flexibilitätsoptionen Demand Side Management">Flexibilitätsoptionen Demand Side Managementu</option>
+            <option value="Flexibilitätsoptionen Sektorkopplung">Flexibilitätsoptionen Sektorkopplung</option>
+            <option value="Flexibilitätsoptionen Gaskraftwerke">Flexibilitätsoptionen Gaskraftwerke</option>
+            <option value="Flexibilitätsoptionen Power-to-Gas">Flexibilitätsoptionen GPower-to-Gas</option>
+            <option value="Allgemeine Steuerungsformen Regionaler Ausgleich">Allgemeine Steuerungsformen Regionaler Ausgleich</option>
+            <option value="Allgemeine Steuerungsformen Nodal/ Zonal Pricing">Allgemeine Steuerungsformen Nodal/ Zonal Pricing</option>
+            <option value="Allgemeine Steuerungsformen Eigenverbrauch">Allgemeine Steuerungsformen Eigenverbrauc</option>
+            <option value="Allgemeine Steuerungsformen Zentrale Optimierung">Allgemeine Steuerungsformen Zentrale Optimierung</option>
+            <option value="Saisonaler Ausgleich von Gasnetzen">Saisonaler Ausgleich von Gasnetzen</option>
+            <option value="EE-Integration von Gasnetzen">EE-Integration von Gasnetzen</option>
+            <option value="Keine Nutzung von Gaskraftwerken">Keine Nutzung von Gaskraftwerken</option>
+            <option value="Ausbau Wärmenetze">Ausbau Wärmenetze</option>
+            <option value="Weniger Wärmenetze">Weniger Wärmenetze</option>
+            <option value="Effizienz vs. EE-Nutzun Fokus Effizienz/ Dämmung">Effizienz vs. EE-Nutzun Fokus Effizienz/ Dämmung</option>
+            <option value="Effizienz vs. EE-Nutzun Fokus EE-Nutzung">Effizienz vs. EE-Nutzun Fokus EE-Nutzung</option>
+            <option value="Starker P2H Einsatz">Starker P2H Einsatz</option>
+            <option value="Schwacher P2H Einsatz">Schwacher P2H Einsatz</option>
+            <option value="Verbot fossiler Heiztechnologie">Verbot fossiler Heiztechnologie</option>
+            <option value="Technologieoffenheit Heiztechnologie">Technologieoffenheit Heiztechnologie</option>
+            <option value="MIV bleibt im Zentrum der Stadtplanung">MIV bleibt im Zentrum der Stadtplanung</option>
+            <option value="Moderate Umgestaltung mit Fokus ÖPNV und Fahrrad in urbanen Räumen">Moderate Umgestaltung mit Fokus ÖPNV und Fahrrad in urbanen Räumen</option>
+            <option value="Starker Instrastrukturumbau zu ÖPNV und Fahrrad (urbane und ländliche Räume)">Starker Instrastrukturumbau zu ÖPNV und Fahrrad (urbane und ländliche Räume)</option>
+            <option value="Fokus schnelle Elektrifizierung">Fokus schnelle Elektrifizierung</option>
+            <option value="Graduelle Elektrifizierung/ Effizienzsteigerung">Graduelle Elektrifizierung/ Effizienzsteigerung</option>
+            <option value="keine spezifische Förderung von Antriebstechnologien">keine spezifische Förderung von Antriebstechnologien</option>
+            <option value=" Verbrennungsmotor mit Biokraftstoffen"> Verbrennungsmotor mit Biokraftstoffen</option>
+            <option value="Oberleitungs-Hybrid-LKW">Oberleitungs-Hybrid-LKW</option>
+            <option value="Synthetische Kraftstoffe">Synthetische Kraftstoffe</option>
+            <option value="Elektrische Betriebe ohne Oberleitung">Elektrische Betriebe ohne Oberleitung</option>
+            <option value="Fokus EE-Strom (vollständig EE)">EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe</option>
+            <option value="EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe">EE-Anteil des Stroms auf heutigem Zielpfad/ Einstieg in alternative Kraftstoffe</option>
+            <option value="Fokus alternative Kraftstoffe">Fokus alternative Kraftstoffe</option>
+            <option value="Sharing bleibt in der Nische">Sharing bleibt in der Nische</option>
+            <option value="Sharing wird dominanter Lebensstil">Sharing wird dominanter Lebensstil</option>
+            <option value="Personen- und Gterverkehr steigt weiter an">Personen- und Gterverkehr steigt weiter an</option>
+            <option value="Moderate Verkehrsvermeidung und -verlagerung">Moderate Verkehrsvermeidung und -verlagerung</option>
+            <option value="Fokus Direktstromnutzung">Fokus Direktstromnutzung</option>
+            <option value="Fokus Wasserstoff">Fokus Wasserstoff</option>
+            <option value="Fokus Methan">Fokus Methan</option>
+            <option value="Fokus Stromsektor">Fokus Stromsektor</option>
+            <option value="Fokus Wärmesektor">Fokus Wärmesektor</option>
+            <option value="KWK als kurzfristige Brückentechnologie">KWK als kurzfristige Brückentechnologie</option>
+            <option value="KWK als mittelfristige Brückentechnologie">KWK als mittelfristige Brückentechnologie</option>
+            <option value="Effizienzsteigerung/ Verbrauchsminderung">Effizienzsteigerung/ Verbrauchsminderung</option>
+            <option value="Direkte Elektrifizierung">Direkte Elektrifizierung</option>
+            <option value="Indirekte Elektrifizierung">Indirekte Elektrifizierung</option>
+            <option value="Biomasse">Biomasse</option>
+        </select></div>
+
+
+
+    </form>
+
+
+
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="btn" ><strong>Send Data</strong></button>
+    <tr>
+        <td><input type="button" value="clear"></td>
+    </tr>
+</div>
+
+<table id="jsonTable"border="2" style="visibility:hidden">
+    <thead>
+    <tr>
+        <th>model1</th>
+        <th>model2</th>
+
+    </tr>
+    </thead>
+    <table id="Table"border="2" style="visibility:hidden">
+        <thead>
+        <tr>
+            <th>user</th>
+            <th>value</th>
+            <th>comment</th>
+            <th>date</th>
+        </tr>
+        </thead>
+</table>
+</body>
+</html>

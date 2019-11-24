@@ -1,0 +1,106 @@
+<html>
+<body background="mill-1745186_1920.jpg">
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+    <!-- Include JS File Here -->
+    <link href="style.css" rel="stylesheet"/>
+    <!-- Include JS File Here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var vname = $("#technik1").val();
+                var vemail = $("#unit1").val();
+                var vregion = $("#max1").val();
+                var variable = $("#type1").val();
+                var vunit = $("#min1").val();
+                var vmost = $("#year1").val();
+
+                var vvalue = $("#source1").val();
+
+                var vvalue1 = $("#comment1").val();
+
+
+
+                if(vname=='' && vemail=='' && vregion=='' && variable=='' && vunit==''&& vmost=='')
+                {
+                    alert("Please fill out the Data");
+                }
+
+                else{
+                    $.post("noman-0.0.1-SNAPSHOT/submitJob2", //Required URL of the page on server
+                        { // Data Sending With Request To Server
+                            technik:vname,
+                            unit:vemail,
+                            min:vregion,
+                            type:variable,
+                            max:vunit,
+                            year:vmost,
+                            source:vvalue,
+                            comment:vvalue1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        },
+                        function(response,status){ // Required Callback Function
+                            alert("Data Received Status : " + status);
+                            $("#form")[0].reset();
+                        });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Pelletheizung Data Model</h2>
+    <hr>
+    <form id="form" method="post">
+        <div id="technik">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>technik</b>&nbsp; &nbsp; &nbsp;</label>
+            <input type="text" Model="technik" id="technik1" placeholder="technik"/><br></div>
+
+        <div id="unit">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>unit</b></label>
+            <input type="text" name="unit" id="unit1" placeholder="unit"/></div>
+
+        <div id="min">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>min</b>&nbsp; &nbsp;</label>
+            <input type="text" Model="min" id="min1" placeholder="min"/><br></div>
+
+        <div id="type">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>type</b></label>
+            <input type="text" name="type" id="type1" placeholder="type"/></div>
+        <div id="max">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>max</b>&nbsp; &nbsp; &nbsp; &nbsp; </label>
+            <input type="text" Model="max" id="max1" placeholder="max"/><br></div>
+
+        <div id="year">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>year</b>&nbsp; &nbsp; </label>
+            <input type="text" name="year" id="year1" placeholder="year"/></div>
+        <div id="source">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>source</b>&nbsp; &nbsp; </label>
+            <input type="text" name="source" id="source1" placeholder="source"/></div>
+        <div id="comment">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label><b>comment</b>&nbsp; &nbsp; </label>
+            <input type="text" name="comment" id="comment1" placeholder="comment"/></div>
+
+
+
+
+    </form>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="btn"><strong>Send Data</strong></button>
+</div>
+</body>
+</html>

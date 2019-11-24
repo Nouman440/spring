@@ -1,0 +1,46 @@
+<html>
+
+<style>
+    body {background-color: lightskyblue;}
+    h1   {color: blanchedalmond;}
+    p    {color: black;}
+</style>
+<head>
+    <script type="text/javascript">
+        function hello() {
+            //
+            $.getJSON("noman-0.0.1-SNAPSHOT/listJobs2", function(json) {
+                $('#jsonTable').css("visibility", "visible").css("border", "1px solid green");
+                $('#jsonTable').append("<tbody>");
+                for (var counter = 0; counter < json.length; counter++) {
+                    $('#jsonTable').append(`<tr><td>${json[counter].technk}</td><td>${json[counter].unit}</td><td>${json[counter].min}</td><td>${json[counter].type}</td><td>${json[counter].max}</td><td>${json[counter].year}</td><td>${json[counter].source}</td><td>${json[counter].comment}</td><td>`);
+                }
+                $('#jsonTable').append("</tbody>");
+                $('th').css("border", "1px solid green");
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<h1>Please click the button below to view Pelletheizung Data</h1>
+<body>
+<input type="button" value="View Pelletheizung Data" id="View Pelletheizung Data" onclick="return hello();"/>
+<br/>
+<table id="jsonTable"border="2" style="visibility:hidden">
+    <thead>
+    <tr>
+        <!-- The JSON downloaded from the URL above provides four attributes.-->
+        <th>technik</th>
+        <th>unit</th>
+        <th>Min</th>
+        <th>Type</th>
+        <th>Max</th>
+        <th>Year</th>
+        <th>Source</th>
+        <th>Comment</th>
+
+    </tr>
+    </thead>
+</table>
+</body>
+</html>
